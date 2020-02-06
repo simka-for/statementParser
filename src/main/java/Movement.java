@@ -1,5 +1,3 @@
-import java.time.LocalDate;
-
 public class Movement {
 
     private String operation;

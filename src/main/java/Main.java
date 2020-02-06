@@ -32,14 +32,14 @@ public class Main {
 
         System.out.println("\nОтчет о приходе: \n" +
                 "==================================");
-        for (String key :  getPayment(coming).keySet()) {
-            System.out.println(key + " : " +  getPayment(coming).get(key) + " RUB");
+        for (String key : getPayment(coming).keySet()) {
+            System.out.println(key + " : " + getPayment(coming).get(key) + " RUB");
         }
 
         System.out.println("\nОтчет о расходе: \n" +
                 "==================================");
-        for (String key :  getPayment(consumption).keySet()) {
-            System.out.println(key + " : " +  getPayment(consumption).get(key) + " RUB");
+        for (String key : getPayment(consumption).keySet()) {
+            System.out.println(key + " : " + getPayment(consumption).get(key) + " RUB");
         }
 
 
@@ -76,19 +76,19 @@ public class Main {
     }
 
     private static TreeMap<String, Double> getPayment(List<Movement> operations) {
-        TreeMap<String, Double> report = new TreeMap<>();
+        TreeMap<String, Double> payment = new TreeMap<>();
         for (Movement operation : operations) {
             String operate = operation.getOperation();
-            double amount = 0.0;
+            double amount = 0;
             for (Movement o : operations) {
                 if (operate.equals(o.getOperation())) {
                     amount += o.getConsumption();
                     amount += o.getComing();
                 }
-                report.put(operate, amount);
+                payment.put(operate, amount);
             }
         }
-        return report;
+        return payment;
     }
 
 }
